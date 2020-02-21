@@ -99,8 +99,52 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # Plan
+        # When light is on have the robot start at 0 and move all the way right by each index.
+        # When at the end of the array check to see if it can go right again and if can't start heading left.
+        # Actually instead of it coming back left I could just do bubble sort.
+        # Now when it starts it needs to check the value of the current index its on and the one to the right.
+        # If the index value is greater then the index to the right it will be swamped.
+        # then continue to the right side of the array until it is sorted.
+
+        self.set_light_on()
+        while self.light_is_on():
+            # will turn the light on when a swap occurs like in a bubble sort, if stays off the list is sorted
+            self.set_light_off()
+            # Robot should start going right until it reaches the end of the list
+            while self.can_move_right():
+                # Robot will start off with 'none' so will swap first item
+                self.swap_item()
+                self.move_right()
+                # compare the item in your hand to the next item, if it is greater which equals 1 we need to swap
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.set_light_on()
+                # none is a value that can be swapped as you go right after switching you need to go back left and pick it back up and continue
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+            while self.can_move_left():
+                # do the same thing but backwards
+                self.swap_item()
+                self.move_left()
+                if self.compare_item == -1:
+                    self.swap_item()
+                    self.set_light_on()
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+
+            # Rules
+            #   * You may use any pre-defined robot methods.
+            #   * You may NOT modify any pre-defined robot methods.
+            #   * You may use logical operators. (`if`, `and`, `or`, `not`, etc.)
+            #   * You may use comparison operators. (`>`, `>=`, `<`, `<=`, `==`, `is`, etc.)
+            #   * You may use iterators. (`while`, `for`, `break`, `continue`)
+            #   * You may NOT store any variables. (`=`)
+            #   * You may NOT access any instance variables directly. (`self._anything`)
+            #   * You may NOT use any Python libraries or class methods. (`sorted()`, etc.)
+            #   * You may define robot helper methods, as long as they follow all the rules.
 
 
 if __name__ == "__main__":

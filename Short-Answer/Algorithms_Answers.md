@@ -2,12 +2,18 @@
 
 ## Exercise I
 
-a)I believe it is a O(n!). The while loop will just keep going because a = 0 and will always be less then the number and doesn't have a break indicator.
+a)O(n) Loop is bassed on n
 
-b)I believe its is a O(n^2). It has to loops running on each other dependant on J varaiable.
+b)O(n^2) cause it keeps looping until J equals to n
 
-c)I believe it is a 0(n). It just runs the operation once.
+c)O(n) its Recursion calling on itself
 
 ## Exercise II
 
-I would first assume that the user can input a certain integer for how many stories this building has. I would write a function that allowed one paramater to passed in (n). I would then think of way how to determine a floor to throw the egg off by the n of stories in the building by user input to help mimimize the broken eggs. I would think dividing (n) by 3 and that number would be our F. If any egg was dropped below F then it would be safe. If it was dropped higher then F then it would break. I believe the time complexity for my solution would be 0(log n)
+- This function will take 1 parameter as n for the number of stories in a building
+- We can assume the array is sorted starting from 1 story going up to n number of stories
+- I would try a binary search way. Start off by dividing the number of stories n//2
+- Then check if the egg breaks
+- If it does break then repeat that process with n that is divided by 2 at the begging of the length of the building.
+- We should by then reach a story that will not break the egg.
+- It would be 0(log(n))
